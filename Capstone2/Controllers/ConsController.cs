@@ -61,7 +61,7 @@ namespace Capstone2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ConId,UserId,Date,ConEntry")] Cons cons)
+        public async Task<IActionResult> Create(Cons cons)
         {
             ModelState.Remove("UserId");
             ModelState.Remove("User");
@@ -109,11 +109,17 @@ namespace Capstone2.Controllers
                 return NotFound();
             }
 
+            // Removes unneeded info from model state before passing it in
+            ModelState.Remove("UserId");
+            ModelState.Remove("User");
             if (ModelState.IsValid)
             {
                 try
                 {
                     _context.Update(cons);
+                    cons.User = await
+                  GetCurrentUserAsync();
+                    cons.UserId = cons.UserId;
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -129,6 +135,7 @@ namespace Capstone2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", cons.UserId);
             return View(cons);
         }
 

@@ -64,6 +64,7 @@ namespace Capstone2.Controllers
         public async Task<IActionResult> Create(Pros pros)
             
         {
+            // Removes unneeded info from model state before passing it in
             ModelState.Remove("UserId");
             ModelState.Remove("User");
            
@@ -71,6 +72,7 @@ namespace Capstone2.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(pros);
+                // Adds info back in
                 pros.User = await
                     GetCurrentUserAsync();
                 pros.UserId = pros.UserId;
@@ -110,11 +112,17 @@ namespace Capstone2.Controllers
                 return NotFound();
             }
 
+            // Removes unneeded info from model state before passing it in
+            ModelState.Remove("UserId");
+            ModelState.Remove("User");
             if (ModelState.IsValid)
             {
                 try
                 {
                     _context.Update(pros);
+                    pros.User = await
+                   GetCurrentUserAsync();
+                    pros.UserId = pros.UserId;
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -130,6 +138,10 @@ namespace Capstone2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            //ViewData["ProId"] = new SelectList(_context.ApplicationUsers, "ProEntry", "Date", pros.ProId);
+            ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", pros.UserId);
+
+
             return View(pros);
         }
 
