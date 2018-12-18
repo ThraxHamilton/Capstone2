@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Capstone2.Data;
 using Capstone2.Models;
 using Microsoft.AspNetCore.Identity;
+using Capstone2.Models.ViewModels;
 
 namespace Capstone2.Controllers
 {
@@ -74,11 +75,18 @@ namespace Capstone2.Controllers
                     GetCurrentUserAsync();
                 cons.UserId = cons.UserId;
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(GetTotals));
             }
             ViewData["ConId"] = new SelectList(_context.ApplicationUsers, "ConEntry", "Date", cons.UserId);
 
             return View(cons);
+        }
+        public async Task<IActionResult> GetTotals()
+        {
+            ProConViewModel proConViewModel = new ProConViewModel(_context);
+
+            
+            return View(proConViewModel);
         }
 
         // GET: Cons/Edit/5

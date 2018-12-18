@@ -77,7 +77,7 @@ namespace Capstone2.Controllers
                     GetCurrentUserAsync();
                 pros.UserId = pros.UserId;
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Create","Cons");
             }
             ViewData["ProId"] = new SelectList(_context.ApplicationUsers, "ProEntry", "Date", pros.UserId);
 
