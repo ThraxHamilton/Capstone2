@@ -20,9 +20,10 @@ namespace Capstone2.Models.ViewModels
 
         public ProConViewModel(ApplicationDbContext context)
         {
-            ProListItems = context.Pros.ToList();
-            ConListItems = context.Cons.ToList();
-             totalPros = ProListItems.Count();
+            Dictionary<Pros, string> proByDate = new Dictionary<Pros, string>();
+            ProListItems = context.Pros.Where(d => d.Date == DateTime.Today.ToString("MM/dd/yy")).ToList();
+            ConListItems = context.Cons.Where(d => d.Date == DateTime.Today.ToString("MM/dd/yy")).ToList();
+            totalPros = ProListItems.Count();
             totalCons = ConListItems.Count();
            
           
