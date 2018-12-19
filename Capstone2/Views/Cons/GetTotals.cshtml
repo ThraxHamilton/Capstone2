@@ -13,27 +13,34 @@
 <table class="table">
     <thead>
         <tr>
- 
+            <th>
+             Date
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.ProListItems)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ConListItems)
             </th>
-            <th></th>
+
+            
         </tr>
     </thead>
-
     <tbody>
-            <tr>
-                <td>
-                    @Html.DisplayFor(model => model.totalPros)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => model.totalCons)
-                </td>
-            </tr>
-        
+        @foreach (var item in Model.PCTotals)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.totalPros)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.totalCons)
+            </td>
+        </tr>
+        }
     </tbody>
 </table>
 
