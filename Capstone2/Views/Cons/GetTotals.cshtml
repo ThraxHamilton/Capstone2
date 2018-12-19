@@ -1,0 +1,46 @@
+﻿@model Capstone2.Models.ViewModels.ProConViewModel
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+             Date
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProListItems)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConListItems)
+            </th>
+
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.PCTotals)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.totalPros)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.totalCons)
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
