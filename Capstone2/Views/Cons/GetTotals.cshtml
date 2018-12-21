@@ -1,20 +1,11 @@
 ﻿@model Capstone2.Models.ViewModels.ProConViewModel
 
 
-@{
-    ViewData["Title"] = "Index";
-}
-
-<h2>Index</h2>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-             Date
+                Date
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ProListItems)
@@ -23,24 +14,31 @@
                 @Html.DisplayNameFor(model => model.ConListItems)
             </th>
 
-            
+
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.PCTotals)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(model => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.totalPros)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.totalCons)
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.Date)
+                </td>
+                <div class="pros-total">
+                <td>
+                    @Html.DisplayFor(model => item.totalPros)
+                </td>
+                    </div>
+                <td>
+                    @Html.DisplayFor(model => item.totalCons)
+                </td>
+            </tr>
         }
     </tbody>
 </table>
+
+<li><a asp-area="" asp-controller="Pros" asp-action="Index">Pros</a></li>
+<li><a asp-area="" asp-controller="Cons" asp-action="Index">Cons</a></li>
+
+
 
