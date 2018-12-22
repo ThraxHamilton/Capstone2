@@ -8,10 +8,10 @@
                 Date
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ProListItems)
+                Pros Total
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ConListItems)
+               Cons Total
             </th>
 
 
@@ -24,12 +24,12 @@
                 <td>
                     @Html.DisplayFor(model => item.Date)
                 </td>
-                <div class="pros-total">
-                <td>
+               
+                <td class="pro-total">
                     @Html.DisplayFor(model => item.totalPros)
                 </td>
-                    </div>
-                <td>
+                 
+                <td class="con-total">
                     @Html.DisplayFor(model => item.totalCons)
                 </td>
             </tr>

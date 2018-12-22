@@ -14,11 +14,11 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Date" class="control-label"></label>
-                <input asp-for="Date" class="form-control" />
+                <input asp-for="Date" class="form-control" id="date-input-fields" />
                 <span asp-validation-for="Date" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ConEntry" class="control-label"></label>
+                <label asp-for="ConEntry" class="control-label">Today's Negatives</label>
                 <input asp-for="ConEntry" class="form-control" id="con-input-fields" />
                 <span asp-validation-for="ConEntry" class="text-danger"></span>
             </div>
