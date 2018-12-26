@@ -3,7 +3,7 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color: lightseagreen;
+    background-color: #FEFFBE;
 }
 
 /* Wrapping element */
@@ -24,28 +24,55 @@ body {
     width: 100%;
 }
 
-#home-image {
+.home-image {
 text-align:center;
+}
+
+#pro-header {
+    font-family: 'Comic Sans MS';
+    color: #C9E264;
+}
+
+#con-header {
+    font-family: 'Comic Sans MS';
+    color: #C9E264;
+}
+
+#pro-input {
+    font-family: 'Comic Sans MS';
+    color: #20B2AA;
 }
 
 #pro-input-fields {
     width: 750px;
     height: 300px;
+    font-family: 'Reenie Beanie', cursive;
     font-size: 40px;
     color: green;
-    border-style: dashed;
-    border-color: mediumpurple;
+    border-style: none;
+    /*border-color: #FEFFBE;*/
     background-image: url("http://www.anasfim.com/p/2018/04/wrinkled-notebook-paper-background-google-search-textures-and-in-wrinkled-lined-paper-background.jpg");
+}
+
+#con-input {
+    font-family: 'Comic Sans MS';
+    color: #20B2AA;
 }
 
 #con-input-fields {
     width: 750px;
     height: 300px;
+    font-family: 'Reenie Beanie', cursive;
     font-size: 40px;
     color: orangered;
     border-style: dashed;
-    border-color: mediumpurple;
+    border-color: #FEFFBE;
     background-image: url("http://www.anasfim.com/p/2018/04/wrinkled-notebook-paper-background-google-search-textures-and-in-wrinkled-lined-paper-background.jpg");
+}
+
+#date-input {
+    font-family: 'Comic Sans MS';
+    color: #20B2AA
 }
 
 #date-input-fields {
@@ -53,14 +80,40 @@ text-align:center;
     height: 50px;
     font-size: large;
     color: black;
-    border-style: dashed;
+    border-style: none;
     border-color: mediumpurple;
     background-image: url("http://www.anasfim.com/p/2018/04/wrinkled-notebook-paper-background-google-search-textures-and-in-wrinkled-lined-paper-background.jpg");
 }
 
+#total-headers{
+    font-family:'Comic Sans MS';
+}
+
+.total-dates{
+    font-family:'Comic Sans MS';
+}
+
+.pro-total {
+    color: green;
+    font-family: 'Frijole', cursive;
+    font-size: 50px;
+}
+
+.con-total {
+    color: orangered;
+    font-family: 'Frijole', cursive;
+    font-size: 49px;
+}
+
 #navBar {
-    background-color: #C1E068;
-   
+    background-color: #FEFFBE;
+    border: none;
+    font-family: 'Comic Sans MS';
+    font-size: large;
+}
+
+#nav-text {
+    color:#C9E264;
 }
 
 /* QR code generator */

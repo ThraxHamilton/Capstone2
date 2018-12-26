@@ -2,37 +2,39 @@
 
 @{
     ViewData["Title"] = "Create";
+    <link href="https://fonts.googleapis.com/css?family=Reenie+Beanie" rel="stylesheet">
+
 }
 
-<h2>Create</h2>
+<h2 id="pro-header">Positives For Today</h2>
 
-<h4>Pros</h4>
+<h4></h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Date" class="control-label"></label>
+                <label asp-for="Date" class="control-label" id="date-input"></label>
                 <input asp-for="Date" class="form-control" id="date-input-fields" />
                 <span asp-validation-for="Date" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProEntry" class="control-label"></label>
+                <label asp-for="ProEntry" class="control-label" id="pro-input">Write</label>
                 <input asp-for="ProEntry" class="form-control" id="pro-input-fields" />
                 <span asp-validation-for="ProEntry" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                @*<a asp-area="" asp-controller="Cons" asp-action="Create">Continue </a>*@
                 <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Continue" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-   
+
 
 </div>
 

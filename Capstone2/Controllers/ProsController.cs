@@ -84,6 +84,31 @@ namespace Capstone2.Controllers
             return View(pros);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Continue(Pros pros)
+
+        {
+            // Removes unneeded info from model state before passing it in
+            ModelState.Remove("UserId");
+            ModelState.Remove("User");
+
+
+            if (ModelState.IsValid)
+            {
+                _context.Add(pros);
+                // Adds info back in
+                pros.User = await
+                    GetCurrentUserAsync();
+                pros.UserId = pros.UserId;
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Create));
+            }
+            ViewData["ProId"] = new SelectList(_context.ApplicationUsers, "ProEntry", "Date", pros.UserId);
+
+            return View("Create", "Pros");
+        }
+
         // GET: Pros/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {

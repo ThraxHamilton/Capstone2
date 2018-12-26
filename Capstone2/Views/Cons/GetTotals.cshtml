@@ -1,17 +1,21 @@
 ﻿@model Capstone2.Models.ViewModels.ProConViewModel
 
+@{
+    <link href="https://fonts.googleapis.com/css?family=Frijole" rel="stylesheet">
+}
 
-<table class="table">
+
+<table class="table" id="total-headers">
     <thead>
         <tr>
             <th>
                 Date
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ProListItems)
+             Total
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ConListItems)
+             Total
             </th>
 
 
@@ -21,15 +25,15 @@
         @foreach (var item in Model.PCTotals)
         {
             <tr>
-                <td>
+                <td class="total-dates">
                     @Html.DisplayFor(model => item.Date)
                 </td>
-                <div class="pros-total">
-                <td>
+
+                <td class="pro-total">
                     @Html.DisplayFor(model => item.totalPros)
                 </td>
-                    </div>
-                <td>
+
+                <td class="con-total">
                     @Html.DisplayFor(model => item.totalCons)
                 </td>
             </tr>
