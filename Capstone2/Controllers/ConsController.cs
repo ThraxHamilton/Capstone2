@@ -9,6 +9,7 @@ using Capstone2.Data;
 using Capstone2.Models;
 using Microsoft.AspNetCore.Identity;
 using Capstone2.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Capstone2.Controllers
 {
@@ -28,9 +29,13 @@ namespace Capstone2.Controllers
         }
 
         // GET: Cons
+        [HttpGet]
+        [AutoValidateAntiforgeryToken]
+        [Authorize]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Cons.ToListAsync());
+            ApplicationUser user = await GetCurrentUserAsync();
+            return View(await _context.Cons.Where(users => users.UserId == user.Id).ToListAsync());
         }
 
         // GET: Cons/Details/5
@@ -70,6 +75,7 @@ namespace Capstone2.Controllers
 
             if (ModelState.IsValid)
             {
+                ApplicationUser user = await GetCurrentUserAsync();
                 _context.Add(cons);
                 cons.User = await
                     GetCurrentUserAsync();
@@ -81,11 +87,12 @@ namespace Capstone2.Controllers
 
             return View(cons);
         }
+       
         public async Task<IActionResult> GetTotals()
         {
-            ProConViewModel proConViewModel = new ProConViewModel(_context);
+            ApplicationUser user = await GetCurrentUserAsync();
+            ProConViewModel proConViewModel = new ProConViewModel(_context, user);
 
-            
             return View(proConViewModel);
         }
 
@@ -124,6 +131,7 @@ namespace Capstone2.Controllers
             {
                 try
                 {
+                    ApplicationUser user = await GetCurrentUserAsync();
                     _context.Update(cons);
                     cons.User = await
                   GetCurrentUserAsync();

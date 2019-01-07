@@ -18,6 +18,5 @@ namespace Capstone2.Models
         public string Date { get; set; }
         [Required]
         public string ProEntry { get; set; }
-
     }
 }

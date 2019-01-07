@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Capstone2.Data;
 using Capstone2.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Capstone2.Controllers
 {
@@ -22,14 +23,19 @@ namespace Capstone2.Controllers
 
         public ProsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
-            _userManager = userManager;
+       
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Pros
+        [HttpGet]
+        [AutoValidateAntiforgeryToken]
+        [Authorize]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Pros.ToListAsync());
+            ApplicationUser user = await GetCurrentUserAsync();
+            return View(await _context.Pros.Where(users => users.UserId == user.Id).ToListAsync());
         }
 
         // GET: Pros/Details/5
@@ -64,6 +70,7 @@ namespace Capstone2.Controllers
         public async Task<IActionResult> Create(Pros pros)
             
         {
+
             // Removes unneeded info from model state before passing it in
             ModelState.Remove("UserId");
             ModelState.Remove("User");
@@ -71,6 +78,7 @@ namespace Capstone2.Controllers
            
             if (ModelState.IsValid)
             {
+                ApplicationUser user = await GetCurrentUserAsync();
                 _context.Add(pros);
                 // Adds info back in
                 pros.User = await
