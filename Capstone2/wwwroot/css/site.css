@@ -119,6 +119,20 @@ text-align:center;
     font-size: 40px;
 }
 
+#pro-delete{
+    font-family: 'Reenie Beanie', cursive;
+    color: green;
+}
+
+#con-delete {
+    font-family: 'Reenie Beanie', cursive;
+    color: orangered;
+}
+
+#pro-del-date, #con-del-date{
+    font-family:'Comic Sans MS';
+}
+
 #navBar {
     background-color: #FEFFBE;
     border: none;
