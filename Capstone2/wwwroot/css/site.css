@@ -54,6 +54,11 @@ text-align:center;
     background-image: url("http://www.anasfim.com/p/2018/04/wrinkled-notebook-paper-background-google-search-textures-and-in-wrinkled-lined-paper-background.jpg");
 }
 
+#pro-entry, #pro-deet {
+    font-family: 'Reenie Beanie', cursive;
+    color: green;
+}
+
 #con-input {
     font-family: 'Comic Sans MS';
     color: #20B2AA;
@@ -70,6 +75,11 @@ text-align:center;
     background-image: url("http://www.anasfim.com/p/2018/04/wrinkled-notebook-paper-background-google-search-textures-and-in-wrinkled-lined-paper-background.jpg");
 }
 
+#con-entry, #con-deet {
+    font-family: 'Reenie Beanie', cursive;
+    color: orangered;
+}
+
 #date-input {
     font-family: 'Comic Sans MS';
     color: #20B2AA
@@ -83,6 +93,10 @@ text-align:center;
     border-style: none;
     border-color: mediumpurple;
     background-image: url("http://www.anasfim.com/p/2018/04/wrinkled-notebook-paper-background-google-search-textures-and-in-wrinkled-lined-paper-background.jpg");
+}
+
+#pro-date, #con-date {
+    font-family: 'Comic Sans MS';
 }
 
 #total-headers{
@@ -103,6 +117,20 @@ text-align:center;
     color: orangered;
     font-family: 'Frijole', cursive;
     font-size: 40px;
+}
+
+#pro-delete{
+    font-family: 'Reenie Beanie', cursive;
+    color: green;
+}
+
+#con-delete {
+    font-family: 'Reenie Beanie', cursive;
+    color: orangered;
+}
+
+#pro-del-date, #con-del-date{
+    font-family:'Comic Sans MS';
 }
 
 #navBar {

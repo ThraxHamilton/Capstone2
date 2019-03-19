@@ -21,7 +21,7 @@ namespace Capstone2.Models.ViewModels
         public List<PCTotals> PCTotals { get; set; }
 
 
-        public ProConViewModel(ApplicationDbContext context)
+        public ProConViewModel(ApplicationDbContext context, ApplicationUser applicationUser)
         {
             Dictionary<Pros, string> proByDate = new Dictionary<Pros, string>();
             
@@ -36,6 +36,7 @@ namespace Capstone2.Models.ViewModels
 
 
            var pTotal = from Pros in context.Pros
+            where Pros.UserId == applicationUser.Id
             group Pros by Pros.Date
             into PCTotals
             select new PCTotals
@@ -45,6 +46,7 @@ namespace Capstone2.Models.ViewModels
             };
 
             var cTotal = from Cons in context.Cons
+                         where Cons.UserId == applicationUser.Id
                          group Cons by Cons.Date
                          into PCTotals
                          select new PCTotals

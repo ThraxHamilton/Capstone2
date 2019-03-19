@@ -47,6 +47,8 @@ namespace Capstone2.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("ApplicationUserId");
+
                     b.Property<string>("Date")
                         .IsRequired();
 
